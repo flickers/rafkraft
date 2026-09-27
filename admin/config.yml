@@ -1,9 +1,11 @@
-# Replace OWNER with the GitHub user or organisation before logging in on the live site.
+# Login is served by the Cloudflare Worker. The public site does not call it.
 local_backend: true
 backend:
   name: github
   repo: flickers/rafkraft
   branch: main
+  base_url: https://sveltia-cms-auth.flickers.workers.dev
+  auth_endpoint: auth
 publish_mode: simple
 media_folder: assets/images
 public_folder: assets/images

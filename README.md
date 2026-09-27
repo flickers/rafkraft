@@ -39,13 +39,11 @@ Open http://localhost:8080/admin/, choose the local backend, and save. Then rebu
 
 ### On the published site
 
-Decap’s GitHub backend cannot log in from a purely static host. GitHub requires an OAuth server.
+Login uses the same Cloudflare Worker as Skrautas and Tilveran: [Sveltia CMS Authenticator](https://github.com/sveltia/sveltia-cms-auth) at `https://sveltia-cms-auth.flickers.workers.dev`. The callback stays `https://sveltia-cms-auth.flickers.workers.dev/callback`.
 
-1. In `admin/config.yml`, set `repo` to `your-user/rafkraft` and keep `branch` aligned with the default branch.
-2. Add an OAuth provider from the [Decap external OAuth clients](https://decapcms.org/docs/external-oauth-clients/) list, then set `base_url` and `auth_endpoint` in `admin/config.yml`.
-3. Give editors write access to the repository.
+On that Worker, `ALLOWED_DOMAINS` must include the address where `/admin/` is opened. Add `rafkraft.is` and `www.rafkraft.is` when the domain points here, and `flickers.github.io` if the site is still on GitHub Pages. Editors need write access to `flickers/rafkraft`.
 
-People who only need to draft copy can keep using the local backend and push the JSON themselves.
+Open `https://rafkraft.is/admin/` and sign in with GitHub. People who only draft copy can keep using the local backend and push the JSON themselves.
 
 The CMS interface is English. The field labels are Icelandic. Decap CMS 3.16.3 is vendored in `admin/` under the MIT license (`admin/DECAP-LICENSE.txt`).
 
