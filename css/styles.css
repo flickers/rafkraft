@@ -117,24 +117,14 @@ p {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
   color: var(--navy);
   text-decoration: none;
+  line-height: 0;
 }
 
-.mark {
-  width: 3rem;
-  height: auto;
-  color: var(--signal);
-  flex: none;
-}
-
-.brand-name {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.brand-logo {
+  height: 32px;
+  width: auto;
 }
 
 .nav-toggle {
@@ -835,11 +825,23 @@ textarea {
 }
 
 .site-footer .brand {
-  color: white;
+  background: var(--paper);
+  padding: 0.35rem 0.5rem;
+  border-radius: 2px;
 }
 
-.site-footer .mark {
-  color: #ff5d66;
+.site-footer .brand-logo {
+  height: 28px;
+}
+
+@media (min-width: 700px) {
+  .brand-logo {
+    height: 38px;
+  }
+
+  .site-footer .brand-logo {
+    height: 32px;
+  }
 }
 
 .callbar {
@@ -878,6 +880,12 @@ textarea {
 
   .plate {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

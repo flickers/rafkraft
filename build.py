@@ -13,11 +13,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent
 
-MARK = (
-    '<svg class="mark" viewBox="0 0 72 32" aria-hidden="true" focusable="false">'
-    '<path d="M2 18H16l6-12 8 20 8-14 6 6h20" fill="none" stroke="currentColor" '
-    'stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-)
+
 
 
 def esc(value):
@@ -181,6 +177,8 @@ def image_info(src):
     width = height = None
     if file.suffix.lower() in {".jpg", ".jpeg"}:
         width, height = jpeg_size(file)
+    elif file.suffix.lower() == ".png" and file.read_bytes()[:8] == b"\x89PNG\r\n\x1a\n":
+        width, height = struct.unpack(">II", file.read_bytes()[16:24])
     return rel, width, height
 
 
@@ -289,7 +287,11 @@ def initials(name):
 
 
 def brand():
-    return f'<a class="brand" href="index.html">{MARK}<span class="brand-name">Rafkraft</span></a>'
+    return (
+        '<a class="brand" href="index.html">'
+        '<img class="brand-logo" src="assets/logo.png" alt="Rafkraft" width="143" height="30">'
+        "</a>"
+    )
 
 
 def header(site, active):

@@ -10,7 +10,7 @@ public_folder: assets/images
 site_url: https://rafkraft.is
 display_url: https://rafkraft.is
 logo:
-  src: ../assets/logo.svg
+  src: ../assets/logo.png
   show_in_header: true
 slug:
   encoding: ascii
