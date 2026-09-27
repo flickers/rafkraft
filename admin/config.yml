@@ -1,0 +1,158 @@
+# Replace OWNER with the GitHub user or organisation before logging in on the live site.
+local_backend: true
+backend:
+  name: github
+  repo: flickers/rafkraft
+  branch: main
+publish_mode: simple
+media_folder: assets/images
+public_folder: assets/images
+site_url: https://rafkraft.is
+display_url: https://rafkraft.is
+logo:
+  src: ../assets/logo.svg
+  show_in_header: true
+slug:
+  encoding: ascii
+  clean_accents: true
+editor:
+  preview: false
+collections:
+  - name: settings
+    label: Vefur
+    files:
+      - name: site
+        label: Grunnupplýsingar
+        file: content/site.json
+        format: json
+        fields:
+          - { label: Nafn, name: name, widget: string }
+          - { label: Lögheiti, name: legal_name, widget: string }
+          - { label: Kjarnalína, name: tagline, widget: string }
+          - { label: Lýsing fyrir leitarvélar, name: description, widget: text }
+          - label: Vefslóð
+            name: site_url
+            widget: string
+            hint: Full slóð án skástriks í lokin, til dæmis https://rafkraft.is
+          - label: Sími
+            name: phone
+            widget: string
+            hint: Sjö stafir með bili, til dæmis 567 4911
+          - label: Netfang skrifstofu
+            name: email
+            widget: string
+            required: false
+            hint: Skildu eftir autt ef ekkert sameiginlegt netfang er til.
+          - { label: Kennitala, name: kennitala, widget: string }
+          - { label: VSK-númer, name: vsk_number, widget: string }
+          - label: Stofndagur
+            name: founded
+            widget: string
+            hint: Á forminu ÁÁÁÁ-MM-DD, til dæmis 1977-03-03.
+          - { label: Stofndagur í texta, name: founded_display, widget: string }
+          - { label: ÍSAT, name: isat, widget: string }
+          - label: Opnunartími
+            name: hours
+            widget: string
+            required: false
+            hint: Skildu eftir autt ef opnunartími er ekki auglýstur.
+          - label: Heimilisfang
+            name: address
+            widget: object
+            fields:
+              - { label: Gata og númer, name: street, widget: string }
+              - { label: Póstnúmer, name: postal_code, widget: string }
+              - { label: Staður, name: city, widget: string }
+          - label: Staðsetning á korti
+            name: geo
+            widget: object
+            fields:
+              - { label: Breiddargráða, name: lat, widget: number, value_type: float, step: 0.0000001 }
+              - { label: Lengdargráða, name: lon, widget: number, value_type: float, step: 0.0000001 }
+          - { label: Kicker á forsíðu, name: hero_kicker, widget: string }
+          - { label: Fyrirsögn á forsíðu, name: hero_title, widget: string }
+          - { label: Inngangur á forsíðu, name: hero_text, widget: text }
+          - { label: Forsíðumynd, name: hero_image, widget: image }
+          - { label: Texti forsíðumyndar, name: hero_image_alt, widget: string }
+          - { label: Mynd á um-okkur, name: about_image, widget: image }
+          - { label: Texti um-okkur myndar, name: about_image_alt, widget: string }
+          - label: Myndatexti
+            name: about_image_caption
+            widget: string
+            required: false
+          - { label: Kicker, um okkur, name: about_kicker, widget: string }
+          - { label: Fyrirsögn, um okkur, name: about_title, widget: string }
+          - { label: Inngangur, um okkur, name: about_lead, widget: text }
+          - { label: Meginmál, um okkur, name: about_body, widget: markdown }
+          - { label: Kicker, þjónusta, name: services_kicker, widget: string }
+          - { label: Fyrirsögn, þjónusta, name: services_title, widget: string }
+          - { label: Inngangur, þjónusta, name: services_lead, widget: text }
+          - { label: Kicker, ferli, name: steps_kicker, widget: string }
+          - { label: Fyrirsögn, ferli, name: steps_title, widget: string }
+          - { label: Inngangur, ferli, name: steps_lead, widget: text }
+          - label: Skref
+            name: steps
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Heiti, name: title, widget: string }
+              - { label: Texti, name: text, widget: text }
+          - { label: Kicker, starfsfólk, name: staff_kicker, widget: string }
+          - { label: Fyrirsögn, starfsfólk, name: staff_title, widget: string }
+          - { label: Inngangur, starfsfólk, name: staff_lead, widget: text }
+          - { label: Kicker, samband, name: contact_kicker, widget: string }
+          - { label: Fyrirsögn, samband, name: contact_title, widget: string }
+          - { label: Inngangur, samband, name: contact_lead, widget: text }
+          - { label: Fyrirsögn spurninga, name: faq_title, widget: string }
+          - { label: Inngangur spurninga, name: faq_lead, widget: text }
+          - label: Spurningar
+            name: faq
+            widget: list
+            summary: "{{fields.question}}"
+            fields:
+              - { label: Spurning, name: question, widget: string }
+              - { label: Svar, name: answer, widget: text }
+  - name: services
+    label: Þjónusta
+    label_singular: Þjónusta
+    folder: content/services
+    create: true
+    format: json
+    extension: json
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: [order, title]
+    preview_path: "{{filename}}.html"
+    fields:
+      - { label: Heiti, name: title, widget: string }
+      - { label: Stutt lýsing, name: summary, widget: text }
+      - { label: Mynd, name: image, widget: image }
+      - { label: Texti myndar, name: image_alt, widget: string }
+      - { label: Röð, name: order, widget: number, value_type: int, min: 1, step: 1 }
+      - { label: Meginmál, name: body, widget: markdown }
+  - name: staff
+    label: Starfsfólk
+    label_singular: Starfsmaður
+    folder: content/staff
+    identifier_field: name
+    create: true
+    format: json
+    extension: json
+    slug: "{{slug}}"
+    summary: "{{name}}"
+    sortable_fields: [order, name]
+    preview_path: starfsfolk.html
+    fields:
+      - { label: Nafn, name: name, widget: string }
+      - label: Hlutverk
+        name: role
+        widget: string
+        required: false
+        hint: Aðeins ef hlutverkið er staðfest. Ekki finna upp starfsheiti.
+      - label: Sími
+        name: phone
+        widget: string
+        required: false
+        hint: Skildu eftir autt ef símanúmer er ekki þekkt.
+      - { label: Netfang, name: email, widget: string }
+      - { label: Röð, name: order, widget: number, value_type: int, min: 1, step: 1 }
