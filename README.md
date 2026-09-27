@@ -71,7 +71,7 @@ Kept from [rafkraft.is](https://rafkraft.is/) and the company register at Skattu
 - VSK number 23326, ÍSAT 43.21.0 Raflagnir
 - Bíldshöfði 14, 110 Reykjavík, phone 567 4911
 - The four services on the old site: nýlagnir, endurnýjun raflagna, raflagnaþjónusta, raflagnateikningar
-- Axel Darri Guðmundsson, Sigurður K. Guðnason, Guðjón Gunnar Ögmundsson (registered board member), and Ögmundur Guðmundsson, with the phone numbers and emails published on the old site
+- Axel Darri Guðmundsson, Sigurður K. Guðnason, Guðjón Gunnar Ögmundsson (meistari), and Ögmundur Guðmundsson, with the phone numbers and emails published on the old site
 
 Hleðslustöðvar, iðnaðarvélar, lýsing, brunaviðvörun and tölvu- og fjarskiptalagnir were added because those jobs are commonly offered by other Icelandic electrical contractors. They are written as work Rafkraft can take on, not as a claim copied from the old website.
 
